@@ -1,6 +1,6 @@
 # REST PDF
 
-A REST endpoint to convert HTML URLs to PDF using Node.js
+A REST endpoint to convert HTML URLs to PDF using Node.js and Puppeteer.
 
 A quick and dirty hack with no error handling. Use at your own risk.
 
