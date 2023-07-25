@@ -34,3 +34,7 @@ http://localhost:3000/pdf?target=https://example.com
 | -------- | ------- | ----------- |
 | `target` |         | URL to convert, eg. `https://example.com` |
 | `format` | `A4`    | [Puppeteer paperformat](https://pptr.dev/api/puppeteer.paperformat) |
+
+## License
+
+[MIT licensed](https://en.wikipedia.org/wiki/MIT_License).
