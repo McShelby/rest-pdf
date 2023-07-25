@@ -3,7 +3,7 @@ import express from 'express';
 
 const app = express();
 
-async function autoScroll(page){
+async function autoScroll(page) {
     await page.evaluate(async () => {
         await new Promise((resolve) => {
             var totalHeight = 0;
@@ -13,7 +13,7 @@ async function autoScroll(page){
                 window.scrollBy(0, distance);
                 totalHeight += distance;
 
-                if(totalHeight >= scrollHeight - window.innerHeight){
+                if (totalHeight >= scrollHeight - window.innerHeight) {
                     clearInterval(timer);
                     resolve();
                 }
@@ -26,10 +26,10 @@ app.get("/pdf", async (req, res) => {
     const url = req.query.target;
     const format = req.query.format || 'A4';
 
-	const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
-	await page.goto( url, {
+    await page.goto(url, {
         waitUntil: 'networkidle2'
     });
     await page.setViewport({
@@ -38,15 +38,15 @@ app.get("/pdf", async (req, res) => {
     });
     await autoScroll(page);
 
-	const pdf = await page.pdf({
+    const pdf = await page.pdf({
         format: format,
         printBackground: true,
         scale: 1,
     });
 
-	await browser.close();
+    await browser.close();
 
-	res.contentType("application/pdf");
+    res.contentType("application/pdf");
     res.send(pdf);
 });
 
